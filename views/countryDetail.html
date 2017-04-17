@@ -1,0 +1,53 @@
+<div style="width: 100%" *ngIf="country">
+    <div style="text-align: center; padding-bottom: 20px"><h1>{{country.countryName}}</h1></div>
+    <table style="width: 100%">
+        <thead>
+            <th>Country Info</th>
+            <th style="text-align: center">Country Flag</th>
+            <th style="text-align: center">Country Map</th>
+        </thead>
+        <tr>
+            <td style="width: 30%; vertical-align: top">
+                <table>    
+                    <tr>
+                        <td style="width: 70%">Population:</td>
+                        <td>{{country.population | number : '1.2-2'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Area:</td>
+                        <td>{{country.areaInSqKm | number : '1.2-2'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Capital:</td>
+                        <td>{{country.capital}}</td>
+                    </tr>
+                    <tr *ngIf="captial">
+                        <td>Population of Capital</td>
+                        <td>{{captial.population | number : '1.2-2'}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan='2'>
+                            <hr />
+                            <b>Neighbours</b>
+                        </td>
+                    </tr>                    
+                    <tr>
+                        <td colspan='2'>
+                            <table>
+                                <tr *ngFor='let n of neighbours'>
+                                    <td>{{n.countryName}}</td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="width: 40%; vertical-align: top; text-align: center">
+                <img style="width: 60; height: 60%" src="http://www.geonames.org/flags/x/{{country.countryCode.toLowerCase()}}.gif" />
+            </td>
+            <td style="text-align: center">
+                <img id='myImage' src="http://www.geonames.org/img/country/250/{{country.countryCode.toUpperCase()}}.png" />
+            </td>
+        </tr>
+    </table>
+</div>
